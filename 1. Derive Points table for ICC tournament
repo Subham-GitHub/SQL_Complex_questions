@@ -1,4 +1,4 @@
-create table icc_world_cup
+CREATE TABLE icc_world_cup
 (
 Team_1 Varchar(20),
 Team_2 Varchar(20),
@@ -12,14 +12,14 @@ INSERT INTO icc_world_cup values('Aus','India','India');
 
 select * from icc_world_cup;
 
-WITH t1 as (SELECT team_1 as team_name,
-CASE WHEN team_1= winner THEN 1 else 0 end as num_win
+WITH t1 AS (SELECT team_1 AS team_name,
+CASE WHEN team_1= winner THEN 1 ELSE 0 end AS num_win
 FROM icc_world_cup
 UNION ALL
-SELECT team_2 as team_name,
-CASE WHEN team_2= winner THEN 1 else 0 end as num_win
+SELECT team_2 AS team_name,
+CASE WHEN team_2= winner THEN 1 ELSE 0 end AS num_win
 FROM icc_world_cup)
-SELECT team_name, COUNT(team_name)as no_of_match,SUM(num_win) as no_of_wins,COUNT(team_name)-SUM(num_win) as no_of_loss
+SELECT team_name, COUNT(team_name) AS no_of_match, SUM(num_win) AS no_of_wins, COUNT(team_name)-SUM(num_win) AS no_of_loss
 FROM t1
 GROUP BY 1
 ORDER by 3 DESC;
