@@ -21,4 +21,5 @@ CASE WHEN team_2= winner THEN 1 else 0 end as num_win
 FROM icc_world_cup)
 SELECT team_name, COUNT(team_name)as no_of_match,SUM(num_win) as no_of_wins,COUNT(team_name)-SUM(num_win) as no_of_loss
 FROM t1
-group BY 1;
+GROUP BY 1
+ORDER by 3 DESC;
